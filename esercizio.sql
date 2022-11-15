@@ -20,7 +20,9 @@ group by pe.codice
 
 /* 4. Calcolare le coppie dei codici di programmatori che sono stati
  coautori di almeno un programma scritto in Python. */
-
+select distinct a1.codice, a2.codice
+from autore a1, autore a2
+where a1.id = a2.id and a1.codice<>a2.codice
 /* 5. Calcolare il codice ed il nome dei programmatori 
 che hanno scritto solo programmi Java. */
 
@@ -30,3 +32,9 @@ mostrando codice del programmatore, anno e numero di programmi scritti. */
 
 /* 7. Per ogni linguaggio calcolare quanti sono in media gli autori
  dei programmi scritti in quel linguaggio.
+
+
+ select p.nome, p1.nome
+from genia g, persona p, persona p1
+where (g.figlio = p.nome and g.genitore = p1.nome) 
+    and p.cittànascita = p1.cittànascita
